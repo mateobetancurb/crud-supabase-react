@@ -12,21 +12,24 @@ import {
 
 interface TodoItem {
 	id: string | number;
-	description: string;
+	message: string;
+	assing_to: string;
+	created_at: string;
 }
 
 interface Props {
-	list: TodoItem[];
+	todos: TodoItem[];
 }
 
-export function TodoList({ list }: Props) {
+export function TodoList({ todos }: Props) {
 	return (
 		<section>
-			{list.map((item) => (
-				<section className="flex justify-between mb-5">
-					<div key={item.id}>
-						<p>{item.description}</p>
-					</div>
+			{todos.map((item) => (
+				<div
+					key={item.id}
+					className="flex justify-between mb-5 hover:bg-slate-500 transition-all p-2"
+				>
+					<p className="text-white">{item.message}</p>
 					<AlertDialog>
 						<AlertDialogTrigger>
 							<svg
@@ -46,7 +49,7 @@ export function TodoList({ list }: Props) {
 						<AlertDialogContent className="bg-[#111726] border-none w-96 md:w-auto">
 							<AlertDialogHeader>
 								<AlertDialogTitle>
-									Are you sure to delete {item.description}?
+									Are you sure to delete {item.message}?
 								</AlertDialogTitle>
 								<AlertDialogDescription className="text-gray-300">
 									This action cannot be undone. This will permanently delete
@@ -63,7 +66,7 @@ export function TodoList({ list }: Props) {
 							</AlertDialogFooter>
 						</AlertDialogContent>
 					</AlertDialog>
-				</section>
+				</div>
 			))}
 		</section>
 	);
