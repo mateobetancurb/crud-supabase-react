@@ -1,11 +1,6 @@
 import { Header, Form, TodoList, TodosCounter, Footer } from "@/components";
 import { getAllTodos } from "@/actions";
 
-const todoList = [
-	{ id: 1, description: "Task 1" },
-	{ id: 2, description: "Task 2" },
-];
-
 export default async function App() {
 	const todos = await getAllTodos();
 
