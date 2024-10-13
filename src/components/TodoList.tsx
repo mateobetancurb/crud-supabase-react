@@ -37,7 +37,7 @@ export function TodoList({ todos }: Props) {
 								viewBox="0 0 24 24"
 								strokeWidth={1.5}
 								stroke="currentColor"
-								className="size-6 cursor-pointer"
+								className="size-6 cursor-pointer hover:bg-red-400 hover:p-1 rounded-full transition-all"
 							>
 								<path
 									strokeLinecap="round"
@@ -49,7 +49,7 @@ export function TodoList({ todos }: Props) {
 						<AlertDialogContent className="bg-[#111726] border-none w-96 md:w-auto">
 							<AlertDialogHeader>
 								<AlertDialogTitle>
-									Are you sure to delete {item.message}?
+									Are you sure to delete: {item.message}?
 								</AlertDialogTitle>
 								<AlertDialogDescription className="text-gray-300">
 									This action cannot be undone. This will permanently delete
