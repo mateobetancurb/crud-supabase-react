@@ -49,7 +49,7 @@ export function TodoList({ todos }: Props) {
 						<AlertDialogContent className="bg-[#111726] border-none w-96 md:w-auto">
 							<AlertDialogHeader>
 								<AlertDialogTitle>
-									Are you sure to delete: {item.message}?
+									Are you sure to delete: '{item.message}'?
 								</AlertDialogTitle>
 								<AlertDialogDescription className="text-gray-300">
 									This action cannot be undone. This will permanently delete
