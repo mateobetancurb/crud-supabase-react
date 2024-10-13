@@ -52,6 +52,6 @@ export async function deleteTodoById(id: string | number) {
 			}
 		);
 	} catch (error) {
-		console.log();
+		console.log(error);
 	}
 }
