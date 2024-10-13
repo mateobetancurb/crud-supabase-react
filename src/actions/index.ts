@@ -55,3 +55,24 @@ export async function deleteTodoById(id: string | number) {
 		console.log(error);
 	}
 }
+
+export async function updateTodoById(id: string | number, message: string) {
+	try {
+		await fetch(
+			`${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/todos?id=eq.${id}`,
+			{
+				headers: {
+					apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "",
+					Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
+					"Content-Type": "application/json",
+					Prefer: "return=null",
+				},
+				body: JSON.stringify({
+					message,
+				}),
+			}
+		);
+	} catch (error) {
+		console.log(error);
+	}
+}
