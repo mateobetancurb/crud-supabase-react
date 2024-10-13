@@ -61,6 +61,7 @@ export async function updateTodoById(id: string | number, message: string) {
 		await fetch(
 			`${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/todos?id=eq.${id}`,
 			{
+				method: "PATCH",
 				headers: {
 					apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "",
 					Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
