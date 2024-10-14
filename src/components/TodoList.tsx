@@ -1,17 +1,7 @@
 import { DialogToDeleteItem } from "@/components";
+import { Todos } from "@/interfaces";
 
-interface TodoItem {
-	id: string | number;
-	message: string;
-	assing_to: string;
-	created_at: string;
-}
-
-interface Props {
-	todos: TodoItem[];
-}
-
-export function TodoList({ todos }: Props) {
+export function TodoList({ todos }: Todos) {
 	return (
 		<section>
 			{todos.map((item) => (

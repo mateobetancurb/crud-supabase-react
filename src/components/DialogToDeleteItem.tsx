@@ -12,13 +12,9 @@ import {
 	AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { deleteTodoById } from "@/actions";
+import { TodoToDelete } from "@/interfaces";
 
-interface Props {
-	message: string;
-	id: string | number;
-}
-
-export function DialogToDeleteItem({ message, id }: Props) {
+export function DialogToDeleteItem({ message, id }: TodoToDelete) {
 	return (
 		<AlertDialog>
 			<AlertDialogTrigger>
