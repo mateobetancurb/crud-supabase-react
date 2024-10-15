@@ -53,6 +53,20 @@ export async function deleteTodoById(id: string | number) {
 	}
 }
 
+export async function deleteAll() {
+	try {
+		await fetch(`${import.meta.env.VITE_SUPABASE_URL}/rest/v1/todos?id=gt.0`, {
+			method: "DELETE",
+			headers: {
+				apikey: import.meta.env.VITE_SUPABASE_ANON_KEY || "",
+				Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+			},
+		});
+	} catch (error) {
+		console.log(error);
+	}
+}
+
 export async function updateTodoById(id: string | number, message: string) {
 	try {
 		await fetch(
