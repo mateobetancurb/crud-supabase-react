@@ -1,4 +1,5 @@
-import { DialogToDeleteItem, UpdateItem } from "@/components";
+import { DialogToDeleteItem } from "@/components/DialogToDeleteItem";
+import { UpdateItem } from "@/components/UpdateItem";
 import { Todos } from "@/interfaces";
 
 function TodoList({ todos }: Todos) {
