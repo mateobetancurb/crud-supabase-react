@@ -6,6 +6,7 @@ import { TodoList } from "@/components/TodoList";
 import { TodosCounter } from "@/components/TodosCounter";
 import { Footer } from "@/components/Footer";
 import { ErrorBoundary } from "@/ErrorBoundary";
+import { Toaster } from "@/components/ui/sonner";
 
 export default function App() {
 	const [todos, setTodos] = useState([]);
@@ -28,6 +29,22 @@ export default function App() {
 				<TodoList todos={todos} />
 				<TodosCounter totalTodos={todos.length} />
 				<Footer />
+				<Toaster
+					position="top-right"
+					theme="light"
+					richColors
+					toastOptions={{
+						classNames: {
+							toast:
+								"shadow-lg rounded-lg flex items-center p-4 text-xs gap-1.5",
+							error: "[&>button]:!bg-red-600",
+							info: "[&>button]:!bg-blue-600",
+							success: "[&>button]:!bg-green-600",
+							warning: "[&>button]:!bg-yellow-600",
+						},
+					}}
+				/>
+				{/* <Sonner theme="light" richColors /> */}
 			</main>
 		</ErrorBoundary>
 	);
