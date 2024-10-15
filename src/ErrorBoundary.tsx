@@ -24,9 +24,10 @@ class ErrorBoundary extends Component<Props, State> {
 	public render() {
 		if (this.state.hasError) {
 			return (
-				<h1 className="text-white text-center mt-12">
-					⚠️ Something went wrong
-				</h1>
+				<div className="text-center">
+					<h1 className="text-white  mt-12">⚠️ Something went wrong</h1>
+					<p>Environment variables were deleted temporarily by security</p>
+				</div>
 			);
 		}
 
