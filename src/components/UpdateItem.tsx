@@ -5,7 +5,7 @@ export function UpdateItem() {
 				fill="none"
 				viewBox="0 0 24 24"
 				strokeWidth="1.5"
-				stroke="currentColor"
+				stroke="white"
 				className="size-6 cursor-pointer hover:bg-blue-400 hover:p-1 rounded-full transition-all"
 			>
 				<path

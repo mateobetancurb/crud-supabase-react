@@ -20,7 +20,7 @@ export function DialogToDeleteItem({ message, id }: TodoToDelete) {
 					fill="none"
 					viewBox="0 0 24 24"
 					strokeWidth={1.5}
-					stroke="currentColor"
+					stroke="white"
 					className="size-6 cursor-pointer hover:bg-red-400 hover:p-1 rounded-full transition-all"
 				>
 					<path
@@ -32,7 +32,7 @@ export function DialogToDeleteItem({ message, id }: TodoToDelete) {
 			</AlertDialogTrigger>
 			<AlertDialogContent className="bg-[#111726] border-none w-96 md:w-auto">
 				<AlertDialogHeader>
-					<AlertDialogTitle>
+					<AlertDialogTitle className="text-white">
 						Are you sure to delete: '{message}'?
 					</AlertDialogTitle>
 					<AlertDialogDescription className="text-gray-300">
@@ -41,7 +41,7 @@ export function DialogToDeleteItem({ message, id }: TodoToDelete) {
 					</AlertDialogDescription>
 				</AlertDialogHeader>
 				<AlertDialogFooter>
-					<AlertDialogCancel className="bg-[#111726] hover:bg-slate-600 hover:text-white">
+					<AlertDialogCancel className="bg-[#111726] text-white hover:bg-slate-600 hover:text-white">
 						Cancel
 					</AlertDialogCancel>
 					<AlertDialogAction
