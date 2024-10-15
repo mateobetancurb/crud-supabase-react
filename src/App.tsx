@@ -10,13 +10,14 @@ import { ErrorBoundary } from "@/ErrorBoundary";
 export default function App() {
 	const [todos, setTodos] = useState([]);
 
-	async function getTodos() {
-		const { todos } = await getAllTodos();
-		setTodos(todos);
-	}
-
 	useEffect(() => {
-		getTodos();
+		const fetchData = async () => {
+			const result = await getAllTodos();
+			if (result && result.data) {
+				setTodos(result.data);
+			}
+		};
+		fetchData();
 	}, []);
 
 	return (
@@ -25,7 +26,7 @@ export default function App() {
 				<Header />
 				<Form />
 				<TodoList todos={todos} />
-				<TodosCounter />
+				<TodosCounter totalTodos={todos.length} />
 				<Footer />
 			</main>
 		</ErrorBoundary>
