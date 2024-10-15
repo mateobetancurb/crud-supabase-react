@@ -2,7 +2,7 @@ import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useState, FormEvent, ChangeEvent } from "react";
-import { createTodo } from "@/api";
+import { createTodo, deleteAll } from "@/api";
 
 function Form() {
 	const [todo, setTodo] = useState<string>("");
@@ -29,6 +29,11 @@ function Form() {
 		}
 	};
 
+	const handleDeleteAll = () => {
+		toast.warning("All todos has been deleted!");
+		deleteAll();
+	};
+
 	return (
 		<form
 			onSubmit={handleSubmit}
@@ -48,6 +53,12 @@ function Form() {
 					<Loader2 className="mr-2 h-4 w-4 animate-spin" />
 				)}
 				{isCreateTodoLoading ? "Loading..." : "Create task"}
+			</Button>
+			<Button
+				onClick={handleDeleteAll}
+				className="bg-red-500 hover:bg-red-600 transition-all"
+			>
+				Delete all
 			</Button>
 		</form>
 	);
