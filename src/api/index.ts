@@ -10,7 +10,7 @@ export async function getAllTodos() {
 			}
 		);
 		const data = await response.json();
-		return data;
+		return { data };
 	} catch (error) {
 		console.log(error);
 	}
