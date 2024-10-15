@@ -1,5 +1,6 @@
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 import { useState, FormEvent, ChangeEvent } from "react";
 import { createTodo } from "@/api";
 
@@ -18,6 +19,7 @@ function Form() {
 		try {
 			if (todo.trim()) {
 				await createTodo(todo, "pending to define");
+				toast.success("Task has been created!");
 				setTodo("");
 			}
 		} catch (error) {
@@ -30,14 +32,12 @@ function Form() {
 	return (
 		<form
 			onSubmit={handleSubmit}
-			className="text-white flex flex-col md:flex-row items-center gap-3 mb-5"
+			className="text-white flex justify-center flex-col md:flex-row items-center gap-3 mb-10"
 		>
-			<label htmlFor="add">Add your task</label>
 			<input
 				onChange={handleInputChange}
 				value={todo}
 				type="text"
-				id="add"
 				className="py-2 px-3 rounded-md text-black w-full md:w-80"
 			/>
 			<Button

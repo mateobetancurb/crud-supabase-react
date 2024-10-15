@@ -9,10 +9,16 @@ import {
 	AlertDialogTitle,
 	AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { toast } from "sonner";
 import { deleteTodoById } from "@/api";
 import { TodoToDelete } from "@/interfaces";
 
 export function DialogToDeleteItem({ message, id }: TodoToDelete) {
+	const handleDelete = (id: string | number) => {
+		deleteTodoById(id);
+		toast.warning("Task has been deleted!");
+	};
+
 	return (
 		<AlertDialog>
 			<AlertDialogTrigger>
@@ -45,7 +51,7 @@ export function DialogToDeleteItem({ message, id }: TodoToDelete) {
 						Cancel
 					</AlertDialogCancel>
 					<AlertDialogAction
-						onClick={() => deleteTodoById(id)}
+						onClick={() => handleDelete(id)}
 						className="bg-white text-black hover:bg-slate-300"
 					>
 						Delete
