@@ -2,7 +2,7 @@ import { DialogToDeleteItem } from "@/components/DialogToDeleteItem";
 import { UpdateItem } from "@/components/UpdateItem";
 import { Todos } from "@/interfaces";
 
-function TodoList({ todos }: Todos) {
+function TodoList({ todos = [] }: Todos) {
 	return (
 		<section>
 			{todos.map((item) => (
