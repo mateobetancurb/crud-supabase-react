@@ -6,11 +6,11 @@ export interface TodoItem {
 }
 
 export interface Todos {
-	todos: TodoItem[];
+	todos?: TodoItem[];
 }
 
 export interface TotalTodos {
-	totalTodos: number;
+	totalTodos?: number;
 }
 
 export interface TodoToDelete {
