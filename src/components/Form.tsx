@@ -9,7 +9,7 @@ function Form() {
 	const [todo, setTodo] = useState<string>("");
 	const [isCreateTodoLoading, setIsCreateTodoLoading] =
 		useState<boolean>(false);
-	const { create, refreshTodos } = useAppContext();
+	const { todos, create, refreshTodos } = useAppContext();
 
 	const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setTodo(e.target.value);
@@ -57,12 +57,14 @@ function Form() {
 				)}
 				{isCreateTodoLoading ? "Loading..." : "Create task"}
 			</Button>
-			<Button
-				onClick={handleDeleteAll}
-				className="bg-red-500 hover:bg-red-600 transition-all"
-			>
-				Delete all
-			</Button>
+			{todos.length > 0 && (
+				<Button
+					onClick={handleDeleteAll}
+					className="bg-red-500 hover:bg-red-600 transition-all"
+				>
+					Delete all
+				</Button>
+			)}
 		</form>
 	);
 }
