@@ -2,14 +2,13 @@ import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useState, FormEvent, ChangeEvent } from "react";
-import { deleteAll } from "@/api";
 import { useAppContext } from "@/hooks/useAppContext";
 
 function Form() {
 	const [todo, setTodo] = useState<string>("");
 	const [isCreateTodoLoading, setIsCreateTodoLoading] =
 		useState<boolean>(false);
-	const { todos, create, refreshTodos } = useAppContext();
+	const { todos, create, refreshTodos, deleteAllTodos } = useAppContext();
 
 	const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setTodo(e.target.value);
@@ -33,8 +32,8 @@ function Form() {
 	};
 
 	const handleDeleteAll = () => {
+		deleteAllTodos();
 		toast.warning("All todos has been deleted!");
-		deleteAll();
 	};
 
 	return (
