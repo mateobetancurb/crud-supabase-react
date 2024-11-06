@@ -10,13 +10,14 @@ import {
 	AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
-import { deleteTodoById } from "@/api";
+import { useAppContext } from "@/hooks/useAppContext";
 import { TodoToDelete } from "@/interfaces";
 
 export function DialogToDeleteItem({ message, id }: TodoToDelete) {
+	const { deleteTodo } = useAppContext();
 	const handleDelete = (id: string | number) => {
-		deleteTodoById(id);
-		toast.warning("Task has been deleted!");
+		deleteTodo(id);
+		toast.success("Task has been deleted!");
 	};
 
 	return (
