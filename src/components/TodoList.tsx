@@ -1,8 +1,9 @@
 import { DialogToDeleteItem } from "@/components/DialogToDeleteItem";
 import { UpdateItem } from "@/components/UpdateItem";
-import { Todos } from "@/interfaces";
+import { useAppContext } from "@/hooks/useAppContext";
 
-function TodoList({ todos = [] }: Todos) {
+function TodoList() {
+	const { todos } = useAppContext();
 	return (
 		<section>
 			{todos.map((item) => (
