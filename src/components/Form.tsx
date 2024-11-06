@@ -2,14 +2,14 @@ import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useState, FormEvent, ChangeEvent } from "react";
-import { createTodo, deleteAll } from "@/api";
+import { deleteAll } from "@/api";
 import { useAppContext } from "@/hooks/useAppContext";
 
 function Form() {
 	const [todo, setTodo] = useState<string>("");
 	const [isCreateTodoLoading, setIsCreateTodoLoading] =
 		useState<boolean>(false);
-	const { refreshTodos } = useAppContext();
+	const { create, refreshTodos } = useAppContext();
 
 	const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setTodo(e.target.value);
@@ -20,7 +20,7 @@ function Form() {
 		e.preventDefault();
 		try {
 			if (todo.trim()) {
-				await createTodo(todo, "pending to define");
+				create(todo, "pending to define");
 				toast.success("Task has been created!");
 				setTodo("");
 			}
