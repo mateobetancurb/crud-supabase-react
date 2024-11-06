@@ -1,10 +1,11 @@
-import { TotalTodos } from "@/interfaces";
+import { useAppContext } from "@/hooks/useAppContext";
 
-function TodosCounter({ totalTodos = 0 }: TotalTodos) {
+function TodosCounter() {
+	const { todos } = useAppContext();
 	return (
 		<footer className="flex items-center gap-3 text-white font-bold">
 			<p>Total tasks:</p>
-			<p>{totalTodos}</p>
+			<p>{todos.length}</p>
 		</footer>
 	);
 }
