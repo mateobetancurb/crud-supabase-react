@@ -1,5 +1,5 @@
 import { Toaster } from "@/components/ui/sonner";
-import { TodoProvider } from "./context/todoProvider";
+import { TodoProvider } from "./context/TodoProvider";
 import { Header } from "@/components/Header.tsx";
 import { Form } from "@/components/Form.tsx";
 import { TodoList } from "@/components/TodoList";
