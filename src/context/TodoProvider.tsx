@@ -1,4 +1,4 @@
-import { createContext, useState, ReactNode } from "react";
+import { createContext, useState, useEffect, ReactNode } from "react";
 import {
 	createTodo,
 	deleteTodoById,
@@ -28,6 +28,12 @@ export const TodoContext = createContext<TodoContextType | undefined>(
 
 export function TodoProvider({ children }: { children: ReactNode }) {
 	const [todos, setTodos] = useState<Todo[]>([]);
+
+	useEffect(() => {
+		if (todos.length < 1) {
+			refreshTodos();
+		}
+	}, []);
 
 	const create = async (message: string, assing_to: string) => {
 		await createTodo(message, assing_to);
