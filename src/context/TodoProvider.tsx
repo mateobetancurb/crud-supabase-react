@@ -20,6 +20,7 @@ interface TodoContextType {
 	deleteTodo: (id: string | number) => void;
 	deleteAllTodos: () => void;
 	updateTodo: (id: string | number, message: string) => void;
+	isLoadingTodos: boolean;
 }
 
 export const TodoContext = createContext<TodoContextType | undefined>(
@@ -28,6 +29,7 @@ export const TodoContext = createContext<TodoContextType | undefined>(
 
 export function TodoProvider({ children }: { children: ReactNode }) {
 	const [todos, setTodos] = useState<Todo[]>([]);
+	const [isLoadingTodos, setIsLoadingTodos] = useState<boolean>(false);
 
 	useEffect(() => {
 		if (todos.length < 1) {
@@ -57,9 +59,16 @@ export function TodoProvider({ children }: { children: ReactNode }) {
 	};
 
 	const refreshTodos = async () => {
-		const response = await getAllTodos();
-		if (response && response.data) {
-			setTodos(response.data);
+		setIsLoadingTodos(true);
+		try {
+			const response = await getAllTodos();
+			if (response && response.data) {
+				setTodos(response.data);
+			}
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setIsLoadingTodos(false);
 		}
 	};
 
@@ -67,6 +76,7 @@ export function TodoProvider({ children }: { children: ReactNode }) {
 		<TodoContext.Provider
 			value={{
 				todos,
+				isLoadingTodos,
 				refreshTodos,
 				create,
 				updateTodo,
