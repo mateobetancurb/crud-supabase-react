@@ -1,5 +1,11 @@
 import { createContext, useState, ReactNode } from "react";
-import { createTodo, deleteTodoById, getAllTodos, deleteAll } from "@/api";
+import {
+	createTodo,
+	deleteTodoById,
+	getAllTodos,
+	deleteAll,
+	updateTodoById,
+} from "@/api";
 
 interface Todo {
 	id: number;
@@ -13,6 +19,7 @@ interface TodoContextType {
 	create: (message: string, assing_to: string) => void;
 	deleteTodo: (id: string | number) => void;
 	deleteAllTodos: () => void;
+	updateTodo: (id: string | number, message: string) => void;
 }
 
 export const TodoContext = createContext<TodoContextType | undefined>(
@@ -25,6 +32,12 @@ export function TodoProvider({ children }: { children: ReactNode }) {
 	const create = async (message: string, assing_to: string) => {
 		await createTodo(message, assing_to);
 		refreshTodos();
+	};
+
+	const updateTodo = async (id: string | number, message: string) => {
+		console.log(id);
+		// await updateTodoById(id, message);
+		// refreshTodos();
 	};
 
 	const deleteTodo = async (id: string | number) => {
@@ -46,7 +59,14 @@ export function TodoProvider({ children }: { children: ReactNode }) {
 
 	return (
 		<TodoContext.Provider
-			value={{ todos, refreshTodos, create, deleteTodo, deleteAllTodos }}
+			value={{
+				todos,
+				refreshTodos,
+				create,
+				updateTodo,
+				deleteTodo,
+				deleteAllTodos,
+			}}
 		>
 			{children}
 		</TodoContext.Provider>
