@@ -88,3 +88,25 @@ export async function updateTodoById(id: string | number, message: string) {
 		console.log(error);
 	}
 }
+
+export async function updateTodoStatus(id: string | number, status: boolean) {
+	try {
+		await fetch(
+			`${import.meta.env.VITE_SUPABASE_URL}/rest/v1/todos?id=eq.${id}`,
+			{
+				method: "PATCH",
+				headers: {
+					apikey: import.meta.env.VITE_SUPABASE_ANON_KEY || "",
+					Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+					"Content-Type": "application/json",
+					Prefer: "return=null",
+				},
+				body: JSON.stringify({
+					is_completed: !status,
+				}),
+			}
+		);
+	} catch (error) {
+		console.log(error);
+	}
+}
