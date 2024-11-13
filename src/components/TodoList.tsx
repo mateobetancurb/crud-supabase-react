@@ -3,7 +3,7 @@ import { UpdateItem } from "@/components/UpdateItem";
 import { useAppContext } from "@/hooks/useAppContext";
 
 function TodoList() {
-	const { todos, isLoadingTodos } = useAppContext();
+	const { todos, isLoadingTodos, updateTodoByStatus } = useAppContext();
 
 	return (
 		<section>
@@ -16,10 +16,22 @@ function TodoList() {
 						className="flex mb-5 hover:bg-slate-500 hover:rounded-md transition-all p-2"
 					>
 						<form className="flex items-center mr-5">
-							<input type="checkbox" className="w-4 h-4" />
+							<input
+								onClick={() => updateTodoByStatus(item.id, item.is_completed)}
+								type="checkbox"
+								className="w-4 h-4"
+							/>
 						</form>
 						<div className="flex justify-between w-full">
-							<p className="text-white">{item.message}</p>
+							<p
+								className={`${
+									item.is_completed === true
+										? "line-through text-gray-500"
+										: "text-white"
+								}`}
+							>
+								{item.message}
+							</p>
 							<div className="flex gap-5 items-center">
 								<UpdateItem />
 								<DialogToDeleteItem message={item.message} id={item.id} />
