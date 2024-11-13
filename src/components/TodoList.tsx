@@ -13,12 +13,17 @@ function TodoList() {
 				todos.map((item) => (
 					<div
 						key={item.id}
-						className="flex justify-between mb-5 hover:bg-slate-500 hover:rounded-md transition-all p-2"
+						className="flex mb-5 hover:bg-slate-500 hover:rounded-md transition-all p-2"
 					>
-						<p className="text-white">{item.message}</p>
-						<div className="flex gap-5 items-center">
-							<UpdateItem />
-							<DialogToDeleteItem message={item.message} id={item.id} />
+						<form className="flex items-center mr-5">
+							<input type="checkbox" className="w-4 h-4" />
+						</form>
+						<div className="flex justify-between w-full">
+							<p className="text-white">{item.message}</p>
+							<div className="flex gap-5 items-center">
+								<UpdateItem />
+								<DialogToDeleteItem message={item.message} id={item.id} />
+							</div>
 						</div>
 					</div>
 				))
