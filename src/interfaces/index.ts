@@ -1,6 +1,7 @@
 export interface TodoItem {
 	id: string | number;
 	message: string;
+	is_completed: boolean;
 	assing_to: string;
 	created_at: string;
 }
