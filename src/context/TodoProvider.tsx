@@ -5,6 +5,7 @@ import {
 	getAllTodos,
 	deleteAll,
 	updateTodoById,
+	updateTodoStatus,
 } from "@/api";
 
 interface Todo {
@@ -20,6 +21,7 @@ interface TodoContextType {
 	deleteTodo: (id: string | number) => void;
 	deleteAllTodos: () => void;
 	updateTodo: (id: string | number, message: string) => void;
+	updateTodoByStatus: (id: string | number, status: string) => void;
 	isLoadingTodos: boolean;
 }
 
@@ -46,6 +48,11 @@ export function TodoProvider({ children }: { children: ReactNode }) {
 		console.log(id);
 		// await updateTodoById(id, message);
 		// refreshTodos();
+	};
+
+	const updateTodoByStatus = async (id: string | number, status: string) => {
+		await updateTodoStatus(id, status);
+		refreshTodos();
 	};
 
 	const deleteTodo = async (id: string | number) => {
@@ -82,6 +89,7 @@ export function TodoProvider({ children }: { children: ReactNode }) {
 				updateTodo,
 				deleteTodo,
 				deleteAllTodos,
+				updateTodoByStatus,
 			}}
 		>
 			{children}
