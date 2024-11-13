@@ -50,7 +50,7 @@ export function TodoProvider({ children }: { children: ReactNode }) {
 		// refreshTodos();
 	};
 
-	const updateTodoByStatus = async (id: string | number, status: string) => {
+	const updateTodoByStatus = async (id: string | number, status: boolean) => {
 		await updateTodoStatus(id, status);
 		refreshTodos();
 	};
