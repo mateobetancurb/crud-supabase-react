@@ -17,16 +17,17 @@ function TodoList() {
 					>
 						<form className="flex items-center mr-5">
 							<input
-								onClick={() => updateTodoByStatus(item.id, item.is_completed)}
+								onChange={() => updateTodoByStatus(item.id, item.is_completed)}
 								type="checkbox"
 								className="w-4 h-4"
+								checked={item.is_completed}
 							/>
 						</form>
 						<div className="flex justify-between w-full">
 							<p
 								className={`${
 									item.is_completed === true
-										? "line-through text-gray-500"
+										? "line-through text-gray-400"
 										: "text-white"
 								}`}
 							>
