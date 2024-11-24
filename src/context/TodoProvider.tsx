@@ -11,6 +11,7 @@ import {
 interface Todo {
 	id: number;
 	message: string;
+	is_completed: boolean;
 	assing_to: string;
 }
 
