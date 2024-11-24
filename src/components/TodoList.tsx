@@ -34,7 +34,7 @@ function TodoList() {
 								{item.message}
 							</p>
 							<div className="flex gap-5 items-center">
-								<UpdateItem />
+								{item.is_completed ? null : <UpdateItem />}
 								<DialogToDeleteItem message={item.message} id={item.id} />
 							</div>
 						</div>
