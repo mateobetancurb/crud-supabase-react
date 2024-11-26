@@ -22,8 +22,10 @@ function Form() {
 				create(todo, "pending to define");
 				toast.success("Task has been created!");
 				setTodo("");
+				refreshTodos();
+			} else {
+				toast.error("You need to write a valid task");
 			}
-			refreshTodos();
 		} catch (error) {
 			console.log(error);
 		} finally {
