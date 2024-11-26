@@ -6,6 +6,8 @@ function TodoList() {
 	const { todos, isLoadingTodos, updateTodoByStatus, updateTodo } =
 		useAppContext();
 
+	const completedTodos = todos.filter((todo) => todo.is_completed === true);
+
 	return (
 		<section>
 			{isLoadingTodos ? (
@@ -47,6 +49,14 @@ function TodoList() {
 					</div>
 				))
 			)}
+			<section>
+				<h2 className="text-lg text-white font-bold">Completed</h2>
+				{completedTodos.map((item) => (
+					<li key={item.id} className="text-white my-5">
+						{item.message}
+					</li>
+				))}
+			</section>
 		</section>
 	);
 }
