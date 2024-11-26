@@ -46,9 +46,8 @@ export function TodoProvider({ children }: { children: ReactNode }) {
 	};
 
 	const updateTodo = async (id: string | number, message: string) => {
-		console.log(id);
-		// await updateTodoById(id, message);
-		// refreshTodos();
+		await updateTodoById(id, message);
+		refreshTodos();
 	};
 
 	const updateTodoByStatus = async (id: string | number, status: boolean) => {
