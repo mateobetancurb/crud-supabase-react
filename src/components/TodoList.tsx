@@ -3,7 +3,8 @@ import { UpdateItem } from "@/components/UpdateItem";
 import { useAppContext } from "@/hooks/useAppContext";
 
 function TodoList() {
-	const { todos, isLoadingTodos, updateTodoByStatus } = useAppContext();
+	const { todos, isLoadingTodos, updateTodoByStatus, updateTodo } =
+		useAppContext();
 
 	return (
 		<section>
@@ -34,7 +35,12 @@ function TodoList() {
 								{item.message}
 							</p>
 							<div className="flex gap-5 items-center">
-								{item.is_completed ? null : <UpdateItem />}
+								{item.is_completed ? null : (
+									<UpdateItem
+										initialMessage={item.message}
+										onUpdate={(newMessage) => updateTodo(item.id, newMessage)}
+									/>
+								)}
 								<DialogToDeleteItem message={item.message} id={item.id} />
 							</div>
 						</div>
