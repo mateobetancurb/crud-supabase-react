@@ -7,13 +7,15 @@ function TodoList() {
 		useAppContext();
 
 	const completedTodos = todos.filter((todo) => todo.is_completed === true);
+	const pendingTodos = todos.filter((todo) => todo.is_completed !== true);
 
 	return (
 		<section>
+			<h2 className="text-lg text-white font-bold">Pending</h2>
 			{isLoadingTodos ? (
 				<p className="text-white text-center mb-10">Loading...</p>
 			) : (
-				todos.map((item) => (
+				pendingTodos.map((item) => (
 					<div
 						key={item.id}
 						className="flex mb-5 hover:bg-slate-500 hover:rounded-md transition-all p-2"
