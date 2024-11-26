@@ -11,7 +11,9 @@ function TodoList() {
 
 	return (
 		<section>
-			<h2 className="text-lg text-white font-bold">Pending</h2>
+			{pendingTodos.length > 0 && (
+				<h2 className="text-lg text-white font-bold">Pending</h2>
+			)}
 			<div className="mb-10">
 				{isLoadingTodos ? (
 					<p className="text-white text-center mb-10">Loading...</p>
@@ -55,14 +57,20 @@ function TodoList() {
 					))
 				)}
 			</div>
-			<div className="mb-10">
-				<h2 className="text-lg text-white font-bold">Completed</h2>
-				{completedTodos.map((item) => (
-					<li key={item.id} className="text-white">
-						{item.message}
-					</li>
-				))}
-			</div>
+			{completedTodos.length > 0 && (
+				<div className="mb-10">
+					<h2 className="text-lg text-white font-bold">Completed</h2>
+					{completedTodos.map((item) => (
+						<li
+							key={item.id}
+							className="text-white line-through flex py-2 justify-between"
+						>
+							{item.message}
+							<DialogToDeleteItem message={item.message} id={item.id} />
+						</li>
+					))}
+				</div>
+			)}
 		</section>
 	);
 }
